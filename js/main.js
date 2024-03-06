@@ -29,11 +29,13 @@ const images = [
     },
 ];
 
+
 const nextJs = document.querySelector(".my-next");
 const previusJs = document.querySelector(".my-previous");
 const myCoaroselJs = document.querySelector(".my-carousel-images");
 const myThumbnailsJs = document.querySelector(".my-thumbnails");
 let counter = 0;
+let timing = setInterval(next, 3000);
 
 images.forEach(element => {
     myCoaroselJs.innerHTML += 
@@ -67,6 +69,28 @@ thumbs[0].classList.add("active");
 
 nextJs.addEventListener("click", () => { 
 
+    next ();
+    
+});
+
+previusJs.addEventListener("click", () => { 
+
+    previous ();
+    
+});
+
+thumbs.forEach((thumb, index) => {
+    thumb.addEventListener('click', () => {
+        thumbs[counter].classList.remove("active");
+        Imgs[counter].classList.remove("active");
+        counter = index;
+        thumbs[counter].classList.add("active");
+        Imgs[counter].classList.add("active");
+    })
+})
+
+function next() {
+
     thumbs[counter].classList.remove("active");
     Imgs[counter].classList.remove("active");
     counter++;
@@ -77,9 +101,9 @@ nextJs.addEventListener("click", () => {
     thumbs[counter].classList.add("active");
     Imgs[counter].classList.add("active");
     
-});
+}
 
-previusJs.addEventListener("click", () => { 
+function previous(params) {
 
     thumbs[counter].classList.remove("active");
     Imgs[counter].classList.remove("active");
@@ -91,4 +115,4 @@ previusJs.addEventListener("click", () => {
     thumbs[counter].classList.add("active");
     Imgs[counter].classList.add("active");
     
-});
+}
