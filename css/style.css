@@ -36,11 +36,13 @@ div.my-next{
 }
 
 div.my-previous{
-    left: 1rem;
+    left: 25rem;
+    top: 47rem;
 }
 
 div.my-next{
-    right: 1rem;
+    right: 25rem;
+    top: 47rem;
 }
 
 div.my-previous > span::after{
