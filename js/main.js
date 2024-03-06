@@ -36,6 +36,9 @@ const myCoaroselJs = document.querySelector(".my-carousel-images");
 const myThumbnailsJs = document.querySelector(".my-thumbnails");
 let counter = 0;
 let timing = setInterval(next, 3000);
+const btnsxJs = document.getElementById("btnsx");
+const btndxJs = document.getElementById("btndx");
+const btnstopJs = document.getElementById("btnstop");
 
 images.forEach(element => {
     myCoaroselJs.innerHTML += 
@@ -81,38 +84,61 @@ previusJs.addEventListener("click", () => {
 
 thumbs.forEach((thumb, index) => {
     thumb.addEventListener('click', () => {
+
         thumbs[counter].classList.remove("active");
         Imgs[counter].classList.remove("active");
         counter = index;
         thumbs[counter].classList.add("active");
         Imgs[counter].classList.add("active");
+
     })
 })
 
 function next() {
 
-    thumbs[counter].classList.remove("active");
-    Imgs[counter].classList.remove("active");
+    toggle();
     counter++;
     if (counter == images.length) { 
         counter = 0;
-        
     }
-    thumbs[counter].classList.add("active");
-    Imgs[counter].classList.add("active");
+    toggle();
     
 }
 
-function previous(params) {
+function previous() {
 
-    thumbs[counter].classList.remove("active");
-    Imgs[counter].classList.remove("active");
+    toggle();
     counter--;
     if (counter < 0) { 
         counter = images.length - 1;
-        
     }
-    thumbs[counter].classList.add("active");
-    Imgs[counter].classList.add("active");
+    toggle();
     
 }
+
+function toggle() {
+
+    thumbs[counter].classList.toggle("active");
+    Imgs[counter].classList.toggle("active");
+    
+}
+
+btnstopJs.addEventListener("click", () => {
+
+    clearInterval(timing);
+    
+});
+
+btnsxJs.addEventListener("click", () => {
+
+    clearInterval(timing);
+    timing = setInterval(previous, 3000);
+    
+});
+
+btndxJs.addEventListener("click", () => {
+
+    clearInterval(timing);
+    timing = setInterval(next, 3000);
+    
+});
