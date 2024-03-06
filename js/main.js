@@ -1,3 +1,21 @@
+let counter = 0;
+const nextJs = document.querySelector(".my-next");
+const previusJs = document.querySelector(".my-previus");
+// const containerSmall = document.querySelector(".container-small");
+// const bagrDarkJs = document.querySelector(".bagr-dark");
+// const bordGrayJs = document.querySelector(".bord-gray");
+// const carouselJs = document.getElementById("carousel");
+const myCoaroselJs = document.querySelector(".my-carousel-images");
+const myThumbnailsJs = document.querySelector(".my-thumbnails");
+
+
+
+
+
+
+
+
+
 const images = [
     {
         url: 'http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg',
@@ -28,3 +46,32 @@ const images = [
     },
 ];
 
+images.forEach(element => {
+    myCoaroselJs.innerHTML += 
+    `
+    <div class="my-carousel-item">
+        <img class="img-fluid" src=${element.url} picture">
+        <div class="item-description px-3">
+            <h2>${element.title}</h2>
+            <p>${element.description}</p>
+        </div>
+    </div>
+
+    `
+});
+
+const firstImg = document.querySelector(".my-carousel-item");
+firstImg.classList.add("active");
+
+images.forEach(element => {
+    myThumbnailsJs.innerHTML += 
+    `
+    <div class="my-thumbnail">
+      <img class="img-fluid" src=${element.url}>
+    </div>
+
+    `
+});
+
+const firstThumb = document.querySelectora(".my-thumbnail");
+firstThumb.classList.add("active");
